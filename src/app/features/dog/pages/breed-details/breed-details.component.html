@@ -1,0 +1,23 @@
+<div class="breed-details">
+  <a routerLink="/breeds" class="back-link"> ← All breeds </a>
+
+  <header class="breed-header">
+    <p>BREED GALLERY</p>
+    <h1>{{ breed() | titlecase }}</h1>
+    <span>Discover this breed through photos.</span>
+  </header>
+
+  @if (loading()) {
+    <p class="message">Loading photos...</p>
+  } @else if (errorMessage()) {
+    <p class="message">{{ errorMessage() }}</p>
+  } @else {
+    <div class="images-grid">
+      @for (image of images(); track image) {
+        <img [src]="image" [alt]="breed() + ' dog'" loading="lazy" />
+      } @empty {
+        <p>No photos found.</p>
+      }
+    </div>
+  }
+</div>

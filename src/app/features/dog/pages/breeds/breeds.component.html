@@ -1,0 +1,66 @@
+<div class="breeds-page">
+  <header class="page-header">
+    <a class="brand" routerLink="/random-dog">
+      <span class="brand-icon">🐾</span>
+      <span>Dog Explorer</span>
+    </a>
+
+    <div class="hero">
+      <span class="eyebrow">FIND YOUR FAVORITE</span>
+
+      <h1>Meet the <span>breeds.</span></h1>
+
+      <p>Discover the wonderful world of dogs. Find a breed that captures your heart.</p>
+
+      <div class="breed-count">
+        <strong>{{ breeds().length }}</strong>
+        breeds to explore
+      </div>
+    </div>
+  </header>
+
+  <main class="breeds-content">
+    <div class="section-heading">
+      <div>
+        <h2>Explore breeds</h2>
+        <p>Browse our collection of dog breeds.</p>
+      </div>
+
+      <label class="search-field">
+        <span class="search-icon">⌕</span>
+        <input
+          type="search"
+          placeholder="Search breeds..."
+          [value]="searchTerm()"
+          (input)="searchTerm.set($any($event.target).value)"
+        />
+      </label>
+    </div>
+
+    <div class="breeds-grid">
+      @for (breed of filteredBreeds(); track breed) {
+        <a class="breed-card" [routerLink]="['/breeds', breed]">
+          <div class="breed-card-top">
+            <span class="dog-icon">🐕</span>
+            <span class="card-arrow">↗</span>
+          </div>
+
+          <h3>{{ breed | titlecase }}</h3>
+
+          <div class="card-footer">
+            <span>Explore breed</span>
+            <span class="footer-arrow">→</span>
+          </div>
+        </a>
+      }
+    </div>
+
+    @if (filteredBreeds().length === 0) {
+      <div class="empty-state">
+        <span>🔎</span>
+        <h3>No breeds found</h3>
+        <p>Try searching with a different name.</p>
+      </div>
+    }
+  </main>
+</div>

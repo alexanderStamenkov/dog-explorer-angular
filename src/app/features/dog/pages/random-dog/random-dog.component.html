@@ -1,0 +1,32 @@
+<div class="dog-explorer">
+  <header class="header">
+    <h1>🐕 Dog Explorer</h1>
+    <p>Discover a random dog</p>
+  </header>
+
+  <main class="content">
+    <button class="random-button" (click)="loadRandomDog()">Get Random Dog</button>
+
+    @if (loading()) {
+      Loading...
+    } @else if (response()) {
+      <div class="dog-card">
+        <img [src]="response()!.message" alt="Random dog" class="dog-image" />
+
+        <div class="dog-info">
+          <span class="status">
+            {{ response()!.status }}
+          </span>
+
+          <button class="next-button" (click)="loadRandomDog()">Another Dog</button>
+        </div>
+      </div>
+    } @else {
+      <div class="empty-state">
+        <span class="empty-icon">🐶</span>
+        <h2>No dog yet</h2>
+        <p>Click the button to find a random dog.</p>
+      </div>
+    }
+  </main>
+</div>

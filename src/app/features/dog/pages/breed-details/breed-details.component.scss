@@ -1,0 +1,84 @@
+:host {
+  display: block;
+}
+
+.breed-details {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 24px 64px;
+  color: #20243a;
+}
+
+.back-link {
+  color: #7163e8;
+  font-weight: 600;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.breed-header {
+  padding: 40px 0;
+  text-align: center;
+
+  p {
+    color: #7163e8;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+  }
+
+  h1 {
+    margin: 12px 0;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    text-transform: capitalize;
+  }
+
+  span {
+    color: #74798d;
+  }
+}
+
+.images-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 16px;
+    background: #eeedff;
+  }
+}
+
+.message {
+  padding: 40px 0;
+  color: #74798d;
+  text-align: center;
+}
+
+@media (max-width: 700px) {
+  .images-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+
+    img {
+      height: 200px;
+    }
+  }
+}
+
+@media (max-width: 420px) {
+  .images-grid {
+    grid-template-columns: 1fr;
+
+    img {
+      height: 250px;
+    }
+  }
+}
